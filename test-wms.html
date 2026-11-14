@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.3.*/dist/index.js'></script>
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/@deck.gl/widgets@~9.3.*/dist/stylesheet.css />
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+
+#deck-container .error_text {
+  color: red;
+  background: none;
+  position: absolute;
+  z-index: 100;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": -8,
+    "latitude": 69.2,
+    "longitude": -49.7,
+    "pitch": 18,
+    "zoom": 7.1
+  },
+  "layers": [
+    {
+      "@@type": "BitmapLayer",
+      "bounds": [
+        -55.44033969402528,
+        68.21373639362992,
+        -43.95966030597472,
+        70.14350949948464
+      ],
+      "id": "nasa-gibs-test",
+      "image": "https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=MODIS_Terra_CorrectedReflectance_TrueColor&STYLES=&FORMAT=image%2Fpng&TRANSPARENT=TRUE&WIDTH=1024&HEIGHT=512&SRS=EPSG%3A3857&BBOX=-6171590.384145007%2C10510807.202168692%2C-4893567.000706387%2C11115586.124688752&TIME=2022-01-01",
+      "opacity": 0.92,
+      "pickable": false
+    },
+    {
+      "@@type": "ScatterplotLayer",
+      "data": [
+        {
+          "base_lat": 69.12872,
+          "base_lon": -49.83330000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 226.0,
+          "lat": 69.12872,
+          "lon": -49.83330000000001,
+          "path": [
+            [
+              -49.83330000000001,
+              69.12872
+            ],
+            [
+              -49.83330000000001,
+              69.12872
+            ]
+          ],
+          "radius_m": 371.8957071763269,
+          "sample_id": "JAK-001",
+          "velocity_label": "171 m/yr",
+          "velocity_m_year": 170.864333
+        },
+        {
+          "base_lat": 69.13004,
+          "base_lon": -49.80230000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 227.5,
+          "lat": 69.13004,
+          "lon": -49.80230000000001,
+          "path": [
+            [
+              -49.80230000000001,
+              69.13004
+            ],
+            [
+              -49.80230000000001,
+              69.13004
+            ]
+          ],
+          "radius_m": 410.22393251271296,
+          "sample_id": "JAK-002",
+          "velocity_label": "209 m/yr",
+          "velocity_m_year": 208.962589
+        },
+        {
+          "base_lat": 69.13136,
+          "base_lon": -49.771300000000004,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 229.0,
+          "lat": 69.13136,
+          "lon": -49.771300000000004,
+          "path": [
+            [
+              -49.771300000000004,
+              69.13136
+            ],
+            [
+              -49.771300000000004,
+              69.13136
+            ]
+          ],
+          "radius_m": 402.5990677848222,
+          "sample_id": "JAK-003",
+          "velocity_label": "201 m/yr",
+          "velocity_m_year": 201.383473
+        },
+        {
+          "base_lat": 69.13268,
+          "base_lon": -49.740300000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 230.5,
+          "lat": 69.13268,
+          "lon": -49.740300000000005,
+          "path": [
+            [
+              -49.740300000000005,
+              69.13268
+            ],
+            [
+              -49.740300000000005,
+              69.13268
+            ]
+          ],
+          "radius_m": 394.2422913775666,
+          "sample_id": "JAK-004",
+          "velocity_label": "193 m/yr",
+          "velocity_m_year": 193.076838
+        },
+        {
+          "base_lat": 69.134,
+          "base_lon": -49.709300000000006,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 231.8,
+          "lat": 69.134,
+          "lon": -49.709300000000006,
+          "path": [
+            [
+              -49.709300000000006,
+              69.134
+            ],
+            [
+              -49.709300000000006,
+              69.134
+            ]
+          ],
+          "radius_m": 411.4318147994941,
+          "sample_id": "JAK-005",
+          "velocity_label": "210 m/yr",
+          "velocity_m_year": 210.163224
+        },
+        {
+          "base_lat": 69.13532000000001,
+          "base_lon": -49.67830000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 233.1,
+          "lat": 69.13532000000001,
+          "lon": -49.67830000000001,
+          "path": [
+            [
+              -49.67830000000001,
+              69.13532000000001
+            ],
+            [
+              -49.67830000000001,
+              69.13532000000001
+            ]
+          ],
+          "radius_m": 398.64655616029984,
+          "sample_id": "JAK-006",
+          "velocity_label": "197 m/yr",
+          "velocity_m_year": 197.454677
+        },
+        {
+          "base_lat": 69.13664,
+          "base_lon": -49.64730000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 234.2,
+          "lat": 69.13664,
+          "lon": -49.64730000000001,
+          "path": [
+            [
+              -49.64730000000001,
+              69.13664
+            ],
+            [
+              -49.64730000000001,
+              69.13664
+            ]
+          ],
+          "radius_m": 351.7207157920577,
+          "sample_id": "JAK-007",
+          "velocity_label": "151 m/yr",
+          "velocity_m_year": 150.810391
+        },
+        {
+          "base_lat": 69.13796,
+          "base_lon": -49.6163,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.1,
+          "lat": 69.13796,
+          "lon": -49.6163,
+          "path": [
+            [
+              -49.6163,
+              69.13796
+            ],
+            [
+              -49.6163,
+              69.13796
+            ]
+          ],
+          "radius_m": 340.81574309170946,
+          "sample_id": "JAK-008",
+          "velocity_label": "140 m/yr",
+          "velocity_m_year": 139.970849
+        },
+        {
+          "base_lat": 69.13928,
+          "base_lon": -49.585300000000004,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.9,
+          "lat": 69.13928,
+          "lon": -49.585300000000004,
+          "path": [
+            [
+              -49.585300000000004,
+              69.13928
+            ],
+            [
+              -49.585300000000004,
+              69.13928
+            ]
+          ],
+          "radius_m": 362.7191336701742,
+          "sample_id": "JAK-009",
+          "velocity_label": "162 m/yr",
+          "velocity_m_year": 161.742819
+        },
+        {
+          "base_lat": 69.15072,
+          "base_lon": -49.830200000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 231.6,
+          "lat": 69.15072,
+          "lon": -49.830200000000005,
+          "path": [
+            [
+              -49.830200000000005,
+              69.15072
+            ],
+            [
+              -49.830200000000005,
+              69.15072
+            ]
+          ],
+          "radius_m": 426.72802712855315,
+          "sample_id": "JAK-010",
+          "velocity_label": "225 m/yr",
+          "velocity_m_year": 225.367659
+        },
+        {
+          "base_lat": 69.15204,
+          "base_lon": -49.799200000000006,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 232.8,
+          "lat": 69.15204,
+          "lon": -49.799200000000006,
+          "path": [
+            [
+              -49.799200000000006,
+              69.15204
+            ],
+            [
+              -49.799200000000006,
+              69.15204
+            ]
+          ],
+          "radius_m": 467.57330240758836,
+          "sample_id": "JAK-011",
+          "velocity_label": "266 m/yr",
+          "velocity_m_year": 265.967863
+        },
+        {
+          "base_lat": 69.15336,
+          "base_lon": -49.7682,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 234.0,
+          "lat": 69.15336,
+          "lon": -49.7682,
+          "path": [
+            [
+              -49.7682,
+              69.15336
+            ],
+            [
+              -49.7682,
+              69.15336
+            ]
+          ],
+          "radius_m": 478.6798676913135,
+          "sample_id": "JAK-012",
+          "velocity_label": "277 m/yr",
+          "velocity_m_year": 277.007788
+        },
+        {
+          "base_lat": 69.15468,
+          "base_lon": -49.7372,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 234.9,
+          "lat": 69.15468,
+          "lon": -49.7372,
+          "path": [
+            [
+              -49.7372,
+              69.15468
+            ],
+            [
+              -49.7372,
+              69.15468
+            ]
+          ],
+          "radius_m": 501.42192814106903,
+          "sample_id": "JAK-013",
+          "velocity_label": "300 m/yr",
+          "velocity_m_year": 299.613397
+        },
+        {
+          "base_lat": 69.156,
+          "base_lon": -49.7062,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.8,
+          "lat": 69.156,
+          "lon": -49.7062,
+          "path": [
+            [
+              -49.7062,
+              69.156
+            ],
+            [
+              -49.7062,
+              69.156
+            ]
+          ],
+          "radius_m": 502.0390589416147,
+          "sample_id": "JAK-014",
+          "velocity_label": "300 m/yr",
+          "velocity_m_year": 300.226825
+        },
+        {
+          "base_lat": 69.15732000000001,
+          "base_lon": -49.675200000000004,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.4,
+          "lat": 69.15732000000001,
+          "lon": -49.675200000000004,
+          "path": [
+            [
+              -49.675200000000004,
+              69.15732000000001
+            ],
+            [
+              -49.675200000000004,
+              69.15732000000001
+            ]
+          ],
+          "radius_m": 439.48539154423634,
+          "sample_id": "JAK-015",
+          "velocity_label": "238 m/yr",
+          "velocity_m_year": 238.048479
+        },
+        {
+          "base_lat": 69.15864,
+          "base_lon": -49.644200000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.8,
+          "lat": 69.15864,
+          "lon": -49.644200000000005,
+          "path": [
+            [
+              -49.644200000000005,
+              69.15864
+            ],
+            [
+              -49.644200000000005,
+              69.15864
+            ]
+          ],
+          "radius_m": 376.6173843477642,
+          "sample_id": "JAK-016",
+          "velocity_label": "176 m/yr",
+          "velocity_m_year": 175.55768
+        },
+        {
+          "base_lat": 69.15996000000001,
+          "base_lon": -49.6132,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 237.0,
+          "lat": 69.15996000000001,
+          "lon": -49.6132,
+          "path": [
+            [
+              -49.6132,
+              69.15996000000001
+            ],
+            [
+              -49.6132,
+              69.15996000000001
+            ]
+          ],
+          "radius_m": 370.4727221024874,
+          "sample_id": "JAK-017",
+          "velocity_label": "169 m/yr",
+          "velocity_m_year": 169.449886
+        },
+        {
+          "base_lat": 69.16128,
+          "base_lon": -49.5822,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 237.0,
+          "lat": 69.16128,
+          "lon": -49.5822,
+          "path": [
+            [
+              -49.5822,
+              69.16128
+            ],
+            [
+              -49.5822,
+              69.16128
+            ]
+          ],
+          "radius_m": 368.88775583252215,
+          "sample_id": "JAK-018",
+          "velocity_label": "168 m/yr",
+          "velocity_m_year": 167.874429
+        },
+        {
+          "base_lat": 69.17272,
+          "base_lon": -49.82710000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.6,
+          "lat": 69.17272,
+          "lon": -49.82710000000001,
+          "path": [
+            [
+              -49.82710000000001,
+              69.17272
+            ],
+            [
+              -49.82710000000001,
+              69.17272
+            ]
+          ],
+          "radius_m": 480.17495744987525,
+          "sample_id": "JAK-019",
+          "velocity_label": "278 m/yr",
+          "velocity_m_year": 278.493908
+        },
+        {
+          "base_lat": 69.17403999999999,
+          "base_lon": -49.79610000000001,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.3,
+          "lat": 69.17403999999999,
+          "lon": -49.79610000000001,
+          "path": [
+            [
+              -49.79610000000001,
+              69.17403999999999
+            ],
+            [
+              -49.79610000000001,
+              69.17403999999999
+            ]
+          ],
+          "radius_m": 534.0468873450815,
+          "sample_id": "JAK-020",
+          "velocity_label": "332 m/yr",
+          "velocity_m_year": 332.042606
+        },
+        {
+          "base_lat": 69.17536,
+          "base_lon": -49.765100000000004,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.7,
+          "lat": 69.17536,
+          "lon": -49.765100000000004,
+          "path": [
+            [
+              -49.765100000000004,
+              69.17536
+            ],
+            [
+              -49.765100000000004,
+              69.17536
+            ]
+          ],
+          "radius_m": 590.1486138601585,
+          "sample_id": "JAK-021",
+          "velocity_label": "388 m/yr",
+          "velocity_m_year": 387.807722
+        },
+        {
+          "base_lat": 69.17667999999999,
+          "base_lon": -49.734100000000005,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 237.0,
+          "lat": 69.17667999999999,
+          "lon": -49.734100000000005,
+          "path": [
+            [
+              -49.734100000000005,
+              69.17667999999999
+            ],
+            [
+              -49.734100000000005,
+              69.17667999999999
+            ]
+          ],
+          "radius_m": 636.3044945839479,
+          "sample_id": "JAK-022",
+          "velocity_label": "434 m/yr",
+          "velocity_m_year": 433.686668
+        },
+        {
+          "base_lat": 69.178,
+          "base_lon": -49.703100000000006,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 237.0,
+          "lat": 69.178,
+          "lon": -49.703100000000006,
+          "path": [
+            [
+              -49.703100000000006,
+              69.178
+            ],
+            [
+              -49.703100000000006,
+              69.178
+            ]
+          ],
+          "radius_m": 598.6042378834302,
+          "sample_id": "JAK-023",
+          "velocity_label": "396 m/yr",
+          "velocity_m_year": 396.212612
+        },
+        {
+          "base_lat": 69.17932,
+          "base_lon": -49.67210000000001,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.8,
+          "lat": 69.17932,
+          "lon": -49.67210000000001,
+          "path": [
+            [
+              -49.67210000000001,
+              69.17932
+            ],
+            [
+              -49.67210000000001,
+              69.17932
+            ]
+          ],
+          "radius_m": 493.8464788071413,
+          "sample_id": "JAK-024",
+          "velocity_label": "292 m/yr",
+          "velocity_m_year": 292.0834
+        },
+        {
+          "base_lat": 69.18064,
+          "base_lon": -49.64110000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.4,
+          "lat": 69.18064,
+          "lon": -49.64110000000001,
+          "path": [
+            [
+              -49.64110000000001,
+              69.18064
+            ],
+            [
+              -49.64110000000001,
+              69.18064
+            ]
+          ],
+          "radius_m": 423.5187263847848,
+          "sample_id": "JAK-025",
+          "velocity_label": "222 m/yr",
+          "velocity_m_year": 222.177614
+        },
+        {
+          "base_lat": 69.18196,
+          "base_lon": -49.6101,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.8,
+          "lat": 69.18196,
+          "lon": -49.6101,
+          "path": [
+            [
+              -49.6101,
+              69.18196
+            ],
+            [
+              -49.6101,
+              69.18196
+            ]
+          ],
+          "radius_m": 400.12846766873315,
+          "sample_id": "JAK-026",
+          "velocity_label": "199 m/yr",
+          "velocity_m_year": 198.927697
+        },
+        {
+          "base_lat": 69.18328,
+          "base_lon": -49.579100000000004,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.0,
+          "lat": 69.18328,
+          "lon": -49.579100000000004,
+          "path": [
+            [
+              -49.579100000000004,
+              69.18328
+            ],
+            [
+              -49.579100000000004,
+              69.18328
+            ]
+          ],
+          "radius_m": 362.7105586106169,
+          "sample_id": "JAK-027",
+          "velocity_label": "162 m/yr",
+          "velocity_m_year": 161.734295
+        },
+        {
+          "base_lat": 69.19472,
+          "base_lon": -49.824000000000005,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 237.0,
+          "lat": 69.19472,
+          "lon": -49.824000000000005,
+          "path": [
+            [
+              -49.824000000000005,
+              69.19472
+            ],
+            [
+              -49.824000000000005,
+              69.19472
+            ]
+          ],
+          "radius_m": 499.53228527629295,
+          "sample_id": "JAK-028",
+          "velocity_label": "298 m/yr",
+          "velocity_m_year": 297.735092
+        },
+        {
+          "base_lat": 69.19604,
+          "base_lon": -49.793000000000006,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.9,
+          "lat": 69.19604,
+          "lon": -49.793000000000006,
+          "path": [
+            [
+              -49.793000000000006,
+              69.19604
+            ],
+            [
+              -49.793000000000006,
+              69.19604
+            ]
+          ],
+          "radius_m": 572.2480858356585,
+          "sample_id": "JAK-029",
+          "velocity_label": "370 m/yr",
+          "velocity_m_year": 370.014597
+        },
+        {
+          "base_lat": 69.19736,
+          "base_lon": -49.762,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.5,
+          "lat": 69.19736,
+          "lon": -49.762,
+          "path": [
+            [
+              -49.762,
+              69.19736
+            ],
+            [
+              -49.762,
+              69.19736
+            ]
+          ],
+          "radius_m": 669.8811426603928,
+          "sample_id": "JAK-030",
+          "velocity_label": "467 m/yr",
+          "velocity_m_year": 467.061856
+        },
+        {
+          "base_lat": 69.19868,
+          "base_lon": -49.731,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 236.0,
+          "lat": 69.19868,
+          "lon": -49.731,
+          "path": [
+            [
+              -49.731,
+              69.19868
+            ],
+            [
+              -49.731,
+              69.19868
+            ]
+          ],
+          "radius_m": 700.0,
+          "sample_id": "JAK-031",
+          "velocity_label": "512 m/yr",
+          "velocity_m_year": 512.143345
+        },
+        {
+          "base_lat": 69.2,
+          "base_lon": -49.7,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.2,
+          "lat": 69.2,
+          "lon": -49.7,
+          "path": [
+            [
+              -49.7,
+              69.2
+            ],
+            [
+              -49.7,
+              69.2
+            ]
+          ],
+          "radius_m": 643.8161824306976,
+          "sample_id": "JAK-032",
+          "velocity_label": "441 m/yr",
+          "velocity_m_year": 441.153285
+        },
+        {
+          "base_lat": 69.20132000000001,
+          "base_lon": -49.669000000000004,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 234.3,
+          "lat": 69.20132000000001,
+          "lon": -49.669000000000004,
+          "path": [
+            [
+              -49.669000000000004,
+              69.20132000000001
+            ],
+            [
+              -49.669000000000004,
+              69.20132000000001
+            ]
+          ],
+          "radius_m": 531.3971581539367,
+          "sample_id": "JAK-033",
+          "velocity_label": "329 m/yr",
+          "velocity_m_year": 329.408775
+        },
+        {
+          "base_lat": 69.20264,
+          "base_lon": -49.638000000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 233.2,
+          "lat": 69.20264,
+          "lon": -49.638000000000005,
+          "path": [
+            [
+              -49.638000000000005,
+              69.20264
+            ],
+            [
+              -49.638000000000005,
+              69.20264
+            ]
+          ],
+          "radius_m": 462.86159897579677,
+          "sample_id": "JAK-034",
+          "velocity_label": "261 m/yr",
+          "velocity_m_year": 261.284429
+        },
+        {
+          "base_lat": 69.20396000000001,
+          "base_lon": -49.607,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 232.0,
+          "lat": 69.20396000000001,
+          "lon": -49.607,
+          "path": [
+            [
+              -49.607,
+              69.20396000000001
+            ],
+            [
+              -49.607,
+              69.20396000000001
+            ]
+          ],
+          "radius_m": 409.94644193271836,
+          "sample_id": "JAK-035",
+          "velocity_label": "209 m/yr",
+          "velocity_m_year": 208.686763
+        },
+        {
+          "base_lat": 69.20528,
+          "base_lon": -49.576,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 230.6,
+          "lat": 69.20528,
+          "lon": -49.576,
+          "path": [
+            [
+              -49.576,
+              69.20528
+            ],
+            [
+              -49.576,
+              69.20528
+            ]
+          ],
+          "radius_m": 349.77945924831533,
+          "sample_id": "JAK-036",
+          "velocity_label": "149 m/yr",
+          "velocity_m_year": 148.880782
+        },
+        {
+          "base_lat": 69.21672000000001,
+          "base_lon": -49.8209,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 235.4,
+          "lat": 69.21672000000001,
+          "lon": -49.8209,
+          "path": [
+            [
+              -49.8209,
+              69.21672000000001
+            ],
+            [
+              -49.8209,
+              69.21672000000001
+            ]
+          ],
+          "radius_m": 469.3107773619058,
+          "sample_id": "JAK-037",
+          "velocity_label": "268 m/yr",
+          "velocity_m_year": 267.694913
+        },
+        {
+          "base_lat": 69.21804,
+          "base_lon": -49.7899,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 234.5,
+          "lat": 69.21804,
+          "lon": -49.7899,
+          "path": [
+            [
+              -49.7899,
+              69.21804
+            ],
+            [
+              -49.7899,
+              69.21804
+            ]
+          ],
+          "radius_m": 551.8666036168028,
+          "sample_id": "JAK-038",
+          "velocity_label": "350 m/yr",
+          "velocity_m_year": 349.755404
+        },
+        {
+          "base_lat": 69.21936000000001,
+          "base_lon": -49.7589,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 233.4,
+          "lat": 69.21936000000001,
+          "lon": -49.7589,
+          "path": [
+            [
+              -49.7589,
+              69.21936000000001
+            ],
+            [
+              -49.7589,
+              69.21936000000001
+            ]
+          ],
+          "radius_m": 655.6680260507562,
+          "sample_id": "JAK-039",
+          "velocity_label": "453 m/yr",
+          "velocity_m_year": 452.934018
+        },
+        {
+          "base_lat": 69.22068,
+          "base_lon": -49.7279,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 232.2,
+          "lat": 69.22068,
+          "lon": -49.7279,
+          "path": [
+            [
+              -49.7279,
+              69.22068
+            ],
+            [
+              -49.7279,
+              69.22068
+            ]
+          ],
+          "radius_m": 676.4815409727662,
+          "sample_id": "JAK-040",
+          "velocity_label": "474 m/yr",
+          "velocity_m_year": 473.622652
+        },
+        {
+          "base_lat": 69.22200000000001,
+          "base_lon": -49.6969,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 230.9,
+          "lat": 69.22200000000001,
+          "lon": -49.6969,
+          "path": [
+            [
+              -49.6969,
+              69.22200000000001
+            ],
+            [
+              -49.6969,
+              69.22200000000001
+            ]
+          ],
+          "radius_m": 601.7489555225302,
+          "sample_id": "JAK-041",
+          "velocity_label": "399 m/yr",
+          "velocity_m_year": 399.338462
+        },
+        {
+          "base_lat": 69.22332000000002,
+          "base_lon": -49.6659,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 229.5,
+          "lat": 69.22332000000002,
+          "lon": -49.6659,
+          "path": [
+            [
+              -49.6659,
+              69.22332000000002
+            ],
+            [
+              -49.6659,
+              69.22332000000002
+            ]
+          ],
+          "radius_m": 522.5475187688462,
+          "sample_id": "JAK-042",
+          "velocity_label": "321 m/yr",
+          "velocity_m_year": 320.612234
+        },
+        {
+          "base_lat": 69.22464000000001,
+          "base_lon": -49.6349,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 228.0,
+          "lat": 69.22464000000001,
+          "lon": -49.6349,
+          "path": [
+            [
+              -49.6349,
+              69.22464000000001
+            ],
+            [
+              -49.6349,
+              69.22464000000001
+            ]
+          ],
+          "radius_m": 464.2287257058172,
+          "sample_id": "JAK-043",
+          "velocity_label": "263 m/yr",
+          "velocity_m_year": 262.643353
+        },
+        {
+          "base_lat": 69.22596000000001,
+          "base_lon": -49.603899999999996,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 226.5,
+          "lat": 69.22596000000001,
+          "lon": -49.603899999999996,
+          "path": [
+            [
+              -49.603899999999996,
+              69.22596000000001
+            ],
+            [
+              -49.603899999999996,
+              69.22596000000001
+            ]
+          ],
+          "radius_m": 392.21386407634134,
+          "sample_id": "JAK-044",
+          "velocity_label": "191 m/yr",
+          "velocity_m_year": 191.060581
+        },
+        {
+          "base_lat": 69.22728000000001,
+          "base_lon": -49.5729,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 224.9,
+          "lat": 69.22728000000001,
+          "lon": -49.5729,
+          "path": [
+            [
+              -49.5729,
+              69.22728000000001
+            ],
+            [
+              -49.5729,
+              69.22728000000001
+            ]
+          ],
+          "radius_m": 339.7809655792522,
+          "sample_id": "JAK-045",
+          "velocity_label": "139 m/yr",
+          "velocity_m_year": 138.94228
+        },
+        {
+          "base_lat": 69.23872,
+          "base_lon": -49.817800000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 231.2,
+          "lat": 69.23872,
+          "lon": -49.817800000000005,
+          "path": [
+            [
+              -49.817800000000005,
+              69.23872
+            ],
+            [
+              -49.817800000000005,
+              69.23872
+            ]
+          ],
+          "radius_m": 413.1709254327375,
+          "sample_id": "JAK-046",
+          "velocity_label": "212 m/yr",
+          "velocity_m_year": 211.8919
+        },
+        {
+          "base_lat": 69.24004,
+          "base_lon": -49.78680000000001,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 229.8,
+          "lat": 69.24004,
+          "lon": -49.78680000000001,
+          "path": [
+            [
+              -49.78680000000001,
+              69.24004
+            ],
+            [
+              -49.78680000000001,
+              69.24004
+            ]
+          ],
+          "radius_m": 489.6428775303628,
+          "sample_id": "JAK-047",
+          "velocity_label": "288 m/yr",
+          "velocity_m_year": 287.90502
+        },
+        {
+          "base_lat": 69.24136,
+          "base_lon": -49.7558,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 228.3,
+          "lat": 69.24136,
+          "lon": -49.7558,
+          "path": [
+            [
+              -49.7558,
+              69.24136
+            ],
+            [
+              -49.7558,
+              69.24136
+            ]
+          ],
+          "radius_m": 560.0224362943302,
+          "sample_id": "JAK-048",
+          "velocity_label": "358 m/yr",
+          "velocity_m_year": 357.862302
+        },
+        {
+          "base_lat": 69.24268,
+          "base_lon": -49.7248,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 226.8,
+          "lat": 69.24268,
+          "lon": -49.7248,
+          "path": [
+            [
+              -49.7248,
+              69.24268
+            ],
+            [
+              -49.7248,
+              69.24268
+            ]
+          ],
+          "radius_m": 551.2506086994863,
+          "sample_id": "JAK-049",
+          "velocity_label": "349 m/yr",
+          "velocity_m_year": 349.143105
+        },
+        {
+          "base_lat": 69.244,
+          "base_lon": -49.6938,
+          "color": [
+            255,
+            164,
+            84,
+            220
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 225.2,
+          "lat": 69.244,
+          "lon": -49.6938,
+          "path": [
+            [
+              -49.6938,
+              69.244
+            ],
+            [
+              -49.6938,
+              69.244
+            ]
+          ],
+          "radius_m": 505.84572970110236,
+          "sample_id": "JAK-050",
+          "velocity_label": "304 m/yr",
+          "velocity_m_year": 304.010655
+        },
+        {
+          "base_lat": 69.24532,
+          "base_lon": -49.662800000000004,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 223.7,
+          "lat": 69.24532,
+          "lon": -49.662800000000004,
+          "path": [
+            [
+              -49.662800000000004,
+              69.24532
+            ],
+            [
+              -49.662800000000004,
+              69.24532
+            ]
+          ],
+          "radius_m": 475.09656737362195,
+          "sample_id": "JAK-051",
+          "velocity_label": "273 m/yr",
+          "velocity_m_year": 273.445988
+        },
+        {
+          "base_lat": 69.24664,
+          "base_lon": -49.631800000000005,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 222.2,
+          "lat": 69.24664,
+          "lon": -49.631800000000005,
+          "path": [
+            [
+              -49.631800000000005,
+              69.24664
+            ],
+            [
+              -49.631800000000005,
+              69.24664
+            ]
+          ],
+          "radius_m": 427.19015984691,
+          "sample_id": "JAK-052",
+          "velocity_label": "226 m/yr",
+          "velocity_m_year": 225.827019
+        },
+        {
+          "base_lat": 69.24796,
+          "base_lon": -49.6008,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 220.8,
+          "lat": 69.24796,
+          "lon": -49.6008,
+          "path": [
+            [
+              -49.6008,
+              69.24796
+            ],
+            [
+              -49.6008,
+              69.24796
+            ]
+          ],
+          "radius_m": 360.6161190603417,
+          "sample_id": "JAK-053",
+          "velocity_label": "160 m/yr",
+          "velocity_m_year": 159.652422
+        },
+        {
+          "base_lat": 69.24928,
+          "base_lon": -49.5698,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 219.5,
+          "lat": 69.24928,
+          "lon": -49.5698,
+          "path": [
+            [
+              -49.5698,
+              69.24928
+            ],
+            [
+              -49.5698,
+              69.24928
+            ]
+          ],
+          "radius_m": 340.37524301357485,
+          "sample_id": "JAK-054",
+          "velocity_label": "140 m/yr",
+          "velocity_m_year": 139.532992
+        },
+        {
+          "base_lat": 69.26072,
+          "base_lon": -49.8147,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 225.6,
+          "lat": 69.26072,
+          "lon": -49.8147,
+          "path": [
+            [
+              -49.8147,
+              69.26072
+            ],
+            [
+              -49.8147,
+              69.26072
+            ]
+          ],
+          "radius_m": 370.71882651871863,
+          "sample_id": "JAK-055",
+          "velocity_label": "170 m/yr",
+          "velocity_m_year": 169.694514
+        },
+        {
+          "base_lat": 69.26204,
+          "base_lon": -49.7837,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 224.0,
+          "lat": 69.26204,
+          "lon": -49.7837,
+          "path": [
+            [
+              -49.7837,
+              69.26204
+            ],
+            [
+              -49.7837,
+              69.26204
+            ]
+          ],
+          "radius_m": 427.86617323273896,
+          "sample_id": "JAK-056",
+          "velocity_label": "226 m/yr",
+          "velocity_m_year": 226.498976
+        },
+        {
+          "base_lat": 69.26336,
+          "base_lon": -49.7527,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 222.6,
+          "lat": 69.26336,
+          "lon": -49.7527,
+          "path": [
+            [
+              -49.7527,
+              69.26336
+            ],
+            [
+              -49.7527,
+              69.26336
+            ]
+          ],
+          "radius_m": 448.9187736360391,
+          "sample_id": "JAK-057",
+          "velocity_label": "247 m/yr",
+          "velocity_m_year": 247.425261
+        },
+        {
+          "base_lat": 69.26468,
+          "base_lon": -49.7217,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 221.1,
+          "lat": 69.26468,
+          "lon": -49.7217,
+          "path": [
+            [
+              -49.7217,
+              69.26468
+            ],
+            [
+              -49.7217,
+              69.26468
+            ]
+          ],
+          "radius_m": 427.464173450564,
+          "sample_id": "JAK-058",
+          "velocity_label": "226 m/yr",
+          "velocity_m_year": 226.099388
+        },
+        {
+          "base_lat": 69.266,
+          "base_lon": -49.6907,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 219.8,
+          "lat": 69.266,
+          "lon": -49.6907,
+          "path": [
+            [
+              -49.6907,
+              69.266
+            ],
+            [
+              -49.6907,
+              69.266
+            ]
+          ],
+          "radius_m": 422.8209206172236,
+          "sample_id": "JAK-059",
+          "velocity_label": "221 m/yr",
+          "velocity_m_year": 221.483995
+        },
+        {
+          "base_lat": 69.26732000000001,
+          "base_lon": -49.6597,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 218.6,
+          "lat": 69.26732000000001,
+          "lon": -49.6597,
+          "path": [
+            [
+              -49.6597,
+              69.26732000000001
+            ],
+            [
+              -49.6597,
+              69.26732000000001
+            ]
+          ],
+          "radius_m": 420.93567851758183,
+          "sample_id": "JAK-060",
+          "velocity_label": "220 m/yr",
+          "velocity_m_year": 219.610064
+        },
+        {
+          "base_lat": 69.26864,
+          "base_lon": -49.6287,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 217.5,
+          "lat": 69.26864,
+          "lon": -49.6287,
+          "path": [
+            [
+              -49.6287,
+              69.26864
+            ],
+            [
+              -49.6287,
+              69.26864
+            ]
+          ],
+          "radius_m": 377.5705174289078,
+          "sample_id": "JAK-061",
+          "velocity_label": "177 m/yr",
+          "velocity_m_year": 176.505094
+        },
+        {
+          "base_lat": 69.26996000000001,
+          "base_lon": -49.597699999999996,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 216.6,
+          "lat": 69.26996000000001,
+          "lon": -49.597699999999996,
+          "path": [
+            [
+              -49.597699999999996,
+              69.26996000000001
+            ],
+            [
+              -49.597699999999996,
+              69.26996000000001
+            ]
+          ],
+          "radius_m": 338.0965643556769,
+          "sample_id": "JAK-062",
+          "velocity_label": "137 m/yr",
+          "velocity_m_year": 137.267985
+        },
+        {
+          "base_lat": 69.27128,
+          "base_lon": -49.5667,
+          "color": [
+            57,
+            204,
+            201,
+            215
+          ],
+          "displacement_label": "0.0 mm",
+          "displacement_m": 0.0,
+          "heading_deg": 215.9,
+          "lat": 69.27128,
+          "lon": -49.5667,
+          "path": [
+            [
+              -49.5667,
+              69.27128
+            ],
+            [
+              -49.5667,
+              69.27128
+            ]
+          ],
+          "radius_m": 350.7715100301824,
+          "sample_id": "JAK-063",
+          "velocity_label": "150 m/yr",
+          "velocity_m_year": 149.866881
+        }
+      ],
+      "getFillColor": "@@=color",
+      "getLineColor": [
+        10,
+        20,
+        28,
+        220
+      ],
+      "getPosition": "@@=[lon, lat]",
+      "getRadius": "@@=radius_m",
+      "id": "63dc081d-3c5b-4e5a-a530-2417b7750b29",
+      "pickable": true,
+      "radiusMaxPixels": 13,
+      "radiusMinPixels": 4,
+      "radiusUnits": "@@=meters",
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = true;
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration,
+          });
+
+  </script>
+</html>
